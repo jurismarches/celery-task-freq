@@ -70,15 +70,19 @@ def stats_by_hour(data):
     17: #
     """
     hour = None
+    count = 0
     for time, duration in data:
         if hour != time.hour:
             if not hour is None:
-                sys.stdout.write('\n')
+                sys.stdout.write(' %d\n' % count)
+                count = 0
             hour = time.hour
             sys.stdout.write('%.2d: #' % hour)
+            count += 1
         else:
+            count += 1
             sys.stdout.write('#')
-    sys.stdout.write('\n')
+    sys.stdout.write(' %d\n' % count)
 
 
 def main():
