@@ -6,7 +6,7 @@ Print execution frequencies by task using the celery log file.
 Usage
 -----
 
-:::
+::
 
     $ cat /var/log/celery/w2.log | python celery-task-freq.py 
     07: ############
