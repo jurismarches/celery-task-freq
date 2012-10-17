@@ -66,8 +66,9 @@ def stats_by_hour(data):
     ... (datetime.datetime(2012, 10, 16, 17, 14, 3), 5),
     ... ]
     >>> stats_by_hour(data)
-    16: ##
-    17: #
+    Date: 10/16/12
+    16: ## 2
+    17: # 1
     """
     hour = None
     count = 0
