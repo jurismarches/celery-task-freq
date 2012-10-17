@@ -72,6 +72,8 @@ def stats_by_hour(data):
     hour = None
     count = 0
     for time, duration in data:
+        if hour is None:
+            sys.stdout.write('Date: %s\n' % time.strftime('%x'))
         if hour != time.hour:
             if not hour is None:
                 sys.stdout.write(' %d\n' % count)
