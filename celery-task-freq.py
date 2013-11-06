@@ -1,11 +1,16 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import re
 import sys
 import datetime
-import fileinput
 
 
-FILTER_TASK = 'Task jurismarches.annonces.tasks.update_annonce_profile'
+if len(sys.argv) < 3:
+    print('Usage: celery-task-fred.py <log_path> <task_name>')
+    sys.exit(1)
+
+LOG_PATH = sys.argv[1]
+FILTER_TASK = sys.argv[2]
 
 
 def get_time(line):
@@ -90,9 +95,10 @@ def stats_by_hour(data):
 
 def main():
     filtered_lines = []
-    for line in fileinput.input():
-        if FILTER_TASK in line:
-            filtered_lines.append(line.strip())
+    with open(LOG_PATH) as log_file:
+        for line in log_file.readlines():
+            if FILTER_TASK in line:
+                filtered_lines.append(line.strip())
     data = collect_data(filtered_lines)
     stats_by_hour(data)
 
