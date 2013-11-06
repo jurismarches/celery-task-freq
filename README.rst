@@ -8,7 +8,7 @@ Usage
 
 ::
 
-    $ cat /var/log/celery/w2.log | python celery-task-freq.py 
+    $ python celery-task-freq.py /var/log/celery.log 'my_special_task'
     Date: 10/16/12
     07: ############ 12
     08: ######################################################## 56
